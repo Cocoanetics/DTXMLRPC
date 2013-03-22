@@ -27,6 +27,12 @@
 		A7E738CD16FCBB82009097ED /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E738CC16FCBB82009097ED /* Cocoa.framework */; };
 		A7E738DB16FCBBBF009097ED /* DTWordpress.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7388816FCA068009097ED /* DTWordpress.m */; };
 		A7E738DC16FCBBCC009097ED /* libDTXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E738CB16FCBB81009097ED /* libDTXMLRPC.a */; };
+		A7E7392016FCC315009097ED /* DTXMLRPCService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7386C16FC44F4009097ED /* DTXMLRPCService.m */; };
+		A7E7392116FCC315009097ED /* DTXMLRPCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7388016FC9163009097ED /* DTXMLRPCMessage.m */; };
+		A7E7392216FCC315009097ED /* DTXMLRPCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7386916FC44DF009097ED /* DTXMLRPCRequest.m */; };
+		A7E7392316FCC315009097ED /* DTXMLRPCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7386F16FC4670009097ED /* DTXMLRPCResponse.m */; };
+		A7E7392416FCC315009097ED /* DTXMLRPCSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7387716FC5116009097ED /* DTXMLRPCSerialization.m */; };
+		A7E7392516FCC315009097ED /* NSArray+DTXMLRPC.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E7387D16FC5756009097ED /* NSArray+DTXMLRPC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -323,6 +329,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E7392016FCC315009097ED /* DTXMLRPCService.m in Sources */,
+				A7E7392116FCC315009097ED /* DTXMLRPCMessage.m in Sources */,
+				A7E7392216FCC315009097ED /* DTXMLRPCRequest.m in Sources */,
+				A7E7392316FCC315009097ED /* DTXMLRPCResponse.m in Sources */,
+				A7E7392416FCC315009097ED /* DTXMLRPCSerialization.m in Sources */,
+				A7E7392516FCC315009097ED /* NSArray+DTXMLRPC.m in Sources */,
 				A7E738DB16FCBBBF009097ED /* DTWordpress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +506,7 @@
 				A7E738DA16FCBB82009097ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
