@@ -5,6 +5,13 @@ This project provides some simple wrappers around XML-RPC requests and responses
 
 Contains DTBase64Coding from DTFoundation. If you plan to use both let me know so that we can make a static library that excludes this class.
 
+Documentation
+-------------
+
+Documentation can be [browsed online](https://docs.cocoanetics.com/DTXMLRPC) or installed in your Xcode Organizer via the [Atom Feed URL](https://docs.cocoanetics.com/DTXMLRPC/DTXMLRPC.atom).
+
+Follow [@cocoanetics](http://twitter.com/cocoanetics) on Twitter or subscribe to the [Cocoanetics Blog](http://www.cocoanetics.com) for news and updates.
+
 License
 -------
 
