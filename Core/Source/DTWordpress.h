@@ -41,4 +41,12 @@
  */
 - (void)newPostWithContent:(NSDictionary *)content shouldPublish:(BOOL)shouldPublish completion:(void(^)(NSInteger postID, NSError *error))completion;
 
+/**
+ Creates a new media item
+ @param fileName The file name of the media item
+ @param contentType The MIME content type of the data
+ @param data The data of the media item
+ @param shouldOverwrite Set to `YES` to overwrite an item of the same name if it already exists
+ */
+- (void)newMediaObjectWithFileName:(NSString *)fileName contentType:(NSString *)contentType data:(NSData *)data shouldOverwrite:(BOOL)shouldOverwrite completion:(void(^)(NSInteger mediaID, NSURL *mediaURL, NSError *error))completion;
 @end

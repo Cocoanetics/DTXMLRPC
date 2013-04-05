@@ -90,7 +90,7 @@
 {
     NSAssert(_userName, @"User Name needs to be set");
     NSAssert(_password, @"Password needs to be set");
-    NSAssert(content, @"Content needs to be set");
+    NSParameterAssert(content);
     
     NSArray *parameters = @[@(1), _userName, _password, content, [NSNumber numberWithBool:shouldPublish]];
     
@@ -108,6 +108,43 @@
             }
             
             completion([newPostIdentifier integerValue], error);
+        }
+    }];
+}
+
+- (void)newMediaObjectWithFileName:(NSString *)fileName contentType:(NSString *)contentType data:(NSData *)data shouldOverwrite:(BOOL)shouldOverwrite completion:(void(^)(NSInteger mediaID, NSURL *mediaURL, NSError *error))completion
+{
+    NSAssert(_userName, @"User Name needs to be set");
+    NSAssert(_password, @"Password needs to be set");
+    
+    NSParameterAssert(fileName);
+    NSParameterAssert(contentType);
+    NSParameterAssert(data);
+    
+    NSDictionary *content = @{@"name": fileName,
+                              @"type": contentType,
+                              @"bits": data,
+                              @"overwrite": [NSNumber numberWithBool:shouldOverwrite]};
+    
+    NSArray *parameters = @[@(1), _userName, _password, content];
+    
+    DTXMLRPCRequest *request = [[DTXMLRPCRequest alloc] initWithMethodName:@"metaWeblog.newMediaObject" parameters:parameters];
+    
+    [self sendRequest:request completion:^(DTXMLRPCResponse *response) {
+        if (completion)
+        {
+            NSInteger newMediaIdentifier = 0;
+            NSURL *newMediaURL = nil;
+            
+            if (!response.error)
+            {
+                NSDictionary *reponseDictionary = response.parameters[0];
+                
+                newMediaIdentifier = [reponseDictionary[@"id"] integerValue];
+                newMediaURL = [NSURL URLWithString:reponseDictionary[@"url"]];
+            }
+            
+            completion(newMediaIdentifier, newMediaURL, response.error);
         }
     }];
 }
