@@ -32,8 +32,10 @@ typedef void (^DTXMLRPCRequestCompletionHandler)(DTXMLRPCResponse *response);
 
 /**
  Sends an XML-RPC request asynchronously and executes the completion handler upon completion
+ 
+ In case of an error in the underlying NSURLConnection the error is contained in the error parameter of the DTXMLRPCResponse passed to the completion block.
  @param request The XML-RPC request to send
- @param completion The completion handler
+ @param completion The completion handler. 
  */
 - (void)sendRequest:(DTXMLRPCRequest *)request completion:(DTXMLRPCRequestCompletionHandler)completion;
                                                            

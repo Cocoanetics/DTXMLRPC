@@ -45,20 +45,23 @@
         
         if (completion)
         {
-            if (data)
+            if (error)
             {
-                id object = [DTXMLRPCSerialization XMLRPCMethodWithData:data];
+                // package this error into an XMLRPC message
+                id message = [[DTXMLRPCResponse alloc] initWithXMLRPCSequence:@[error]];
                 
-                if (!object)
+                completion(message);
+            }
+            else
+            {
+                id message = [DTXMLRPCSerialization XMLRPCMethodWithData:data];
+                
+                if (!message)
                 {
                     NSLog(@"Unable to parse response from %@", [_endpointURL absoluteString]);
                 }
                 
-                completion(object);
-            }
-            else
-            {
-                NSLog(@"%@", error);
+                completion(message);
             }
         }
     }];
