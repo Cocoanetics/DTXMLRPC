@@ -12,6 +12,8 @@
 
 /**
  Methods to serialize and deserialize XML-RPC objects, e.g. method calls and responses.
+ 
+ Supported are XML-RPC data types described [here](http://en.wikipedia.org/wiki/XML-RPC#Data_types)
  */
 
 @interface DTXMLRPCSerialization : NSObject

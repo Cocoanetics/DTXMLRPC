@@ -667,6 +667,21 @@ static NSDictionary *entityReverseLookup = nil;
     return [NSNumber numberWithInteger:i];
 }
 
+- (NSNumber *)_numberFromDoubleSequence:(NSArray *)sequence
+{
+    if ([sequence count]!=1)
+    {
+        // illegal number of members
+        return nil;
+    }
+    
+    NSString *contents = [sequence objectAtIndex:0];
+    
+    double d = [contents doubleValue];
+    
+    return [NSNumber numberWithInteger:d];
+}
+
 - (NSString *)_stringFromStringSequence:(NSArray *)sequence
 {
     if ([sequence count]!=1)
@@ -705,6 +720,24 @@ static NSDictionary *entityReverseLookup = nil;
     return [dateFormatter dateFromString:contents];
 }
 
+- (NSData *)_dataFromBase64Sequence:(NSArray *)sequence
+{
+    if ([sequence count]!=1)
+    {
+        // illegal number of members
+        return nil;
+    }
+    
+    NSString *contents = [sequence objectAtIndex:0];
+    
+    if (![contents isKindOfClass:[NSString class]])
+    {
+        return nil;
+    }
+
+    return [DTBase64Coding dataByDecodingString:contents];
+}
+
 // a sequence named value
 - (id)_objectFromValueSequence:(NSArray *)sequence
 {
@@ -724,31 +757,48 @@ static NSDictionary *entityReverseLookup = nil;
     
     NSString *stuffName = [stuff DTXMLRPCName];
     
+    // data types according to http://en.wikipedia.org/wiki/XML-RPC#Data_types
+    
     if ([stuffName isEqualToString:@"array"])
     {
         return [self _arrayFromSequence:stuff];
     }
-    else if ([stuffName isEqualToString:@"struct"])
+    else if ([stuffName isEqualToString:@"base64"])
     {
-        return [self _dictionaryFromSequence:stuff];
+        return [self _dataFromBase64Sequence:stuff];
     }
     else if ([stuffName isEqualToString:@"boolean"])
     {
         return [self _numberFromBooleanSequence:stuff];
     }
-    else if ([stuffName isEqualToString:@"string"])
+    else if ([stuffName isEqualToString:@"dateTime.iso8601"])
     {
-        return [self _stringFromStringSequence:stuff];
+        return [self _dateFromDateTimeSequence:stuff];
+    }
+    else if ([stuffName isEqualToString:@"double"])
+    {
+        return [self _numberFromDoubleSequence:stuff];
     }
     else if ([stuffName isEqualToString:@"int"] || [stuffName isEqualToString:@"i4"])
     {
         return [self _numberFromIntegerSequence:stuff];
     }
-    else if ([stuffName isEqualToString:@"dateTime.iso8601"])
+    else if ([stuffName isEqualToString:@"string"])
     {
-        return [self _dateFromDateTimeSequence:stuff];
+        return [self _stringFromStringSequence:stuff];
     }
-    else NSLog(@"%@", stuffName);
+    else if ([stuffName isEqualToString:@"struct"])
+    {
+        return [self _dictionaryFromSequence:stuff];
+    }
+    else if ([stuffName isEqualToString:@"nil"])
+    {
+        return [NSNull null];
+    }
+    else
+    {
+        NSLog(@"Unable to decode object of type '%@'", stuffName);
+    }
     
     return nil;
 }
