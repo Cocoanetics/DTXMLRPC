@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+      /*
     DTWordpress *service = [[DTWordpress alloc] initWithEndpointURL:[NSURL URLWithString:@"http://www.domain.com/xmlrpc.php"]];
     service.userName = @"bla";
     service.password = @"pass";
@@ -32,7 +33,7 @@
         }
     }];
     
-    /*
+  
     
      [service getUsersBlogsWithCompletion:^(NSArray *blogs, NSError *error) {
      if (!blogs)

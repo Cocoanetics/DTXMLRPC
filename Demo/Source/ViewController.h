@@ -10,4 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *userTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passTextField;
+@property (weak, nonatomic) IBOutlet UITextField *URLTextField;
+
+@property (weak, nonatomic) IBOutlet UIButton *uploadImageButton;
+
 @end
