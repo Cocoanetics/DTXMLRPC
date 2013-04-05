@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7463881170ED88200F747DF /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A746387F170ED88200F747DF /* DTBase64Coding.h */; };
+		A7463882170ED88200F747DF /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A7463880170ED88200F747DF /* DTBase64Coding.m */; };
 		A7E7384416FC44A1009097ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384316FC44A1009097ED /* UIKit.framework */; };
 		A7E7384616FC44A1009097ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384516FC44A1009097ED /* Foundation.framework */; };
 		A7E7384816FC44A1009097ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384716FC44A1009097ED /* CoreGraphics.framework */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A746387F170ED88200F747DF /* DTBase64Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBase64Coding.h; sourceTree = "<group>"; };
+		A7463880170ED88200F747DF /* DTBase64Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBase64Coding.m; sourceTree = "<group>"; };
 		A7E7384016FC44A1009097ED /* DTXMLRPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTXMLRPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E7384316FC44A1009097ED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7E7384516FC44A1009097ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A746387E170ED87400F747DF /* DTFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				A746387F170ED88200F747DF /* DTBase64Coding.h */,
+				A7463880170ED88200F747DF /* DTBase64Coding.m */,
+			);
+			name = DTFoundation;
+			sourceTree = "<group>";
+		};
 		A7E7383716FC44A1009097ED = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +162,7 @@
 		A7E7388216FC9F64009097ED /* DTXMLRPC */ = {
 			isa = PBXGroup;
 			children = (
+				A746387E170ED87400F747DF /* DTFoundation */,
 				A7E7387116FC4685009097ED /* DTXMLRPC.h */,
 				A7E7386B16FC44F4009097ED /* DTXMLRPCService.h */,
 				A7E7386C16FC44F4009097ED /* DTXMLRPCService.m */,
@@ -226,6 +240,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7463881170ED88200F747DF /* DTBase64Coding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +351,7 @@
 				A7E7392416FCC315009097ED /* DTXMLRPCSerialization.m in Sources */,
 				A7E7392516FCC315009097ED /* NSArray+DTXMLRPC.m in Sources */,
 				A7E738DB16FCBBBF009097ED /* DTWordpress.m in Sources */,
+				A7463882170ED88200F747DF /* DTBase64Coding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

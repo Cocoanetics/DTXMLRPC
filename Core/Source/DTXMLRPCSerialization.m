@@ -8,6 +8,7 @@
 
 #import "DTXMLRPC.h"
 #import "NSArray+DTXMLRPC.h"
+#import "DTBase64Coding.h"
 
 
 static NSDictionary *entityReverseLookup = nil;
@@ -352,6 +353,11 @@ static NSDictionary *entityReverseLookup = nil;
         [tmpString appendString:@"</struct>"];
         
         return [tmpString copy];
+    }
+    else if ([object isKindOfClass:[NSData class]])
+    {
+        NSString *base64String = [DTBase64Coding stringByEncodingData:object];
+        return [NSString stringWithFormat:@"<base64>%@</base64>", base64String];
     }
     else
     {
