@@ -19,7 +19,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self _loadDefaults];
+}
+
+- (void)_loadDefaults
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.userTextField.text = [defaults objectForKey:@"User"];
+    self.passTextField.text = [defaults objectForKey:@"Pass"];
+    self.URLTextField.text = [defaults objectForKey:@"URL"];
+}
+
+- (void)_saveDefaults
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:self.userTextField.text forKey:@"User"];
+    [defaults setObject:self.passTextField.text forKey:@"Pass"];
+    [defaults setObject:self.URLTextField.text forKey:@"URL"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,6 +53,8 @@
     NSString *user = self.userTextField.text;
     NSString *pass = self.passTextField.text;
     NSURL *URL = [NSURL URLWithString:self.URLTextField.text];
+    
+    [self _saveDefaults];
     
     DTWordpress *wordpress = [[DTWordpress alloc] initWithEndpointURL:URL];
     wordpress.userName = user;
