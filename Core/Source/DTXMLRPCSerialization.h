@@ -11,19 +11,24 @@
 @class DTXMLRPCMessage;
 
 /**
- Methods to serialize and deserialize XML-RPC objects, e.g. method calls and responses.
+ Methods to serialize and deserialize XML-RPC messages, e.g. method calls and responses.
  
  Supported are XML-RPC data types described [here](http://en.wikipedia.org/wiki/XML-RPC#Data_types)
  */
 
 @interface DTXMLRPCSerialization : NSObject
 
-+ (NSData *)dataWithXMLRPCMethod:(id)object;
+/**
+ Serializes an XML-RPC message into an `NSData` instance
+ @param message The message to serialize
+ @returns The serialized data
+ */
++ (NSData *)dataWithXMLRPCMessage:(DTXMLRPCMessage *)message;
 
 /**
- Deserializes an XML-RPC object from data
+ Deserializes an XML-RPC messages from data
  @param data The XML-RPC `NSData` to deserialize
- @returns The deserialized object
+ @returns The deserialized message
  */
 + (DTXMLRPCMessage *)XMLRPCMethodWithData:(NSData *)data;
 

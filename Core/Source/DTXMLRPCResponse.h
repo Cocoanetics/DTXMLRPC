@@ -10,7 +10,7 @@
 
 /**
  An XML-RPC response, as an answer to a DTXMLRPCRequest. 
-
+ */
 @interface DTXMLRPCResponse : DTXMLRPCMessage
 
 /**

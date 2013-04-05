@@ -38,7 +38,7 @@
     URLRequest.HTTPMethod = @"POST";
     [URLRequest addValue:@"text/xml" forHTTPHeaderField:@"Content-Type"];
     
-    NSData *bodyData = [DTXMLRPCSerialization dataWithXMLRPCMethod:request];
+    NSData *bodyData = [DTXMLRPCSerialization dataWithXMLRPCMessage:request];
     [URLRequest setHTTPBody:bodyData];
     
     [NSURLConnection sendAsynchronousRequest:URLRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *URLResponse, NSData *data, NSError *error) {

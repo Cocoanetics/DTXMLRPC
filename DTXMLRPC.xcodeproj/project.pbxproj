@@ -23,7 +23,7 @@
 /* Begin PBXBuildFile section */
 		A7463881170ED88200F747DF /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A746387F170ED88200F747DF /* DTBase64Coding.h */; };
 		A7463882170ED88200F747DF /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A7463880170ED88200F747DF /* DTBase64Coding.m */; };
-		A746388E170EFE7D00F747DF /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = A746388D170EFE7D00F747DF /* AppledocSettings.plist */; };
+		A7463890170F0A8600F747DF /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = A746388F170F0A8600F747DF /* AppledocSettings.plist */; };
 		A7E7384416FC44A1009097ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384316FC44A1009097ED /* UIKit.framework */; };
 		A7E7384616FC44A1009097ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384516FC44A1009097ED /* Foundation.framework */; };
 		A7E7384816FC44A1009097ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384716FC44A1009097ED /* CoreGraphics.framework */; };
@@ -56,7 +56,7 @@
 		A746387F170ED88200F747DF /* DTBase64Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBase64Coding.h; sourceTree = "<group>"; };
 		A7463880170ED88200F747DF /* DTBase64Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBase64Coding.m; sourceTree = "<group>"; };
 		A746388C170EFE1A00F747DF /* Readme.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.markdown; sourceTree = SOURCE_ROOT; };
-		A746388D170EFE7D00F747DF /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = AppledocSettings.plist; sourceTree = "<group>"; };
+		A746388F170F0A8600F747DF /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		A7E7384016FC44A1009097ED /* DTXMLRPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTXMLRPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E7384316FC44A1009097ED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7E7384516FC44A1009097ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,7 +130,6 @@
 		A7463885170EFB1500F747DF /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
-				A746388D170EFE7D00F747DF /* AppledocSettings.plist */,
 				A746388C170EFE1A00F747DF /* Readme.markdown */,
 			);
 			path = Documentation;
@@ -139,6 +138,7 @@
 		A7E7383716FC44A1009097ED = {
 			isa = PBXGroup;
 			children = (
+				A746388F170F0A8600F747DF /* AppledocSettings.plist */,
 				A7463885170EFB1500F747DF /* Documentation */,
 				A7E7386616FC44B9009097ED /* Core */,
 				A7E738AB16FCBA30009097ED /* Demo */,
@@ -346,7 +346,7 @@
 				A7E738BD16FCBA30009097ED /* Default.png in Resources */,
 				A7E738BE16FCBA30009097ED /* Default@2x.png in Resources */,
 				A7E738C016FCBA30009097ED /* ViewController.xib in Resources */,
-				A746388E170EFE7D00F747DF /* AppledocSettings.plist in Resources */,
+				A7463890170F0A8600F747DF /* AppledocSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

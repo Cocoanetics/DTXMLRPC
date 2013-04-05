@@ -419,11 +419,11 @@ static NSDictionary *entityReverseLookup = nil;
 }
 
 
-+ (NSData *)dataWithXMLRPCMethod:(DTXMLRPCMessage *)object
++ (NSData *)dataWithXMLRPCMessage:(DTXMLRPCMessage *)message
 {
-    NSParameterAssert(object);
+    NSParameterAssert(message);
     
-    NSString *rootNameName = [object rootNodeName];
+    NSString *rootNameName = [message rootNodeName];
     
     NSAssert(rootNameName, @"root node name needs to be set for dataRepresentation");
     
@@ -432,9 +432,9 @@ static NSDictionary *entityReverseLookup = nil;
     [tmpString appendFormat:@"<%@>\n", rootNameName];
     
     // add the method name if this object has one
-    if ([object respondsToSelector:@selector(methodName)])
+    if ([message respondsToSelector:@selector(methodName)])
     {
-        NSString *methodName = [object valueForKey:@"methodName"];
+        NSString *methodName = [message valueForKey:@"methodName"];
         
         if (methodName)
         {
@@ -442,11 +442,11 @@ static NSDictionary *entityReverseLookup = nil;
         }
     }
     
-    if ([object.parameters count])
+    if ([message.parameters count])
     {
         [tmpString appendString:@"   <params>\n"];
         
-        for (id oneParam in object.parameters)
+        for (id oneParam in message.parameters)
         {
             [tmpString appendString:@"      <param>\n"];
             [tmpString appendString:@"         <value>"];
