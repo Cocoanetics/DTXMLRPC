@@ -8,11 +8,30 @@
 
 #import "DTXMLRPCService.h"
 
+/**
+ Wrapper around methods for communicating with a Wordpress XML-RPC service.
+ 
+ After creating the wordpress service with an endpoint, set the userName and password. Completion handlers have an error parameter. If this is non-nil then you can use this to display an error message.
+ */
 @interface DTWordpress : DTXMLRPCService
 
+/**
+ @name Setting the Credentials
+ */
+
+/**
+ The user name for authentication
+ */
 @property (nonatomic, copy) NSString *userName;
 
+/**
+ The password for authentication
+ */
 @property (nonatomic, copy) NSString *password;
+
+/**
+ @name API Operations
+ */
 
 /**
  Returns information about all the blogs a given user is a member of.
@@ -47,6 +66,7 @@
  @param contentType The MIME content type of the data
  @param data The data of the media item
  @param shouldOverwrite Set to `YES` to overwrite an item of the same name if it already exists
+ @param completion The completion handler when the request is finished
  */
 - (void)newMediaObjectWithFileName:(NSString *)fileName contentType:(NSString *)contentType data:(NSData *)data shouldOverwrite:(BOOL)shouldOverwrite completion:(void(^)(NSInteger mediaID, NSURL *mediaURL, NSError *error))completion;
 @end

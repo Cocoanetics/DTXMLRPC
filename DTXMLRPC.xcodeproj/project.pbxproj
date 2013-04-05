@@ -6,9 +6,24 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		A7463887170EFB4A00F747DF /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A7463888170EFB4A00F747DF /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				A746388B170EFB6000F747DF /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		A7463881170ED88200F747DF /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A746387F170ED88200F747DF /* DTBase64Coding.h */; };
 		A7463882170ED88200F747DF /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A7463880170ED88200F747DF /* DTBase64Coding.m */; };
+		A746388E170EFE7D00F747DF /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = A746388D170EFE7D00F747DF /* AppledocSettings.plist */; };
 		A7E7384416FC44A1009097ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384316FC44A1009097ED /* UIKit.framework */; };
 		A7E7384616FC44A1009097ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384516FC44A1009097ED /* Foundation.framework */; };
 		A7E7384816FC44A1009097ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E7384716FC44A1009097ED /* CoreGraphics.framework */; };
@@ -40,6 +55,8 @@
 /* Begin PBXFileReference section */
 		A746387F170ED88200F747DF /* DTBase64Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBase64Coding.h; sourceTree = "<group>"; };
 		A7463880170ED88200F747DF /* DTBase64Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBase64Coding.m; sourceTree = "<group>"; };
+		A746388C170EFE1A00F747DF /* Readme.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.markdown; sourceTree = SOURCE_ROOT; };
+		A746388D170EFE7D00F747DF /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		A7E7384016FC44A1009097ED /* DTXMLRPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTXMLRPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E7384316FC44A1009097ED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7E7384516FC44A1009097ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,11 +127,21 @@
 			name = DTFoundation;
 			sourceTree = "<group>";
 		};
+		A7463885170EFB1500F747DF /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				A746388D170EFE7D00F747DF /* AppledocSettings.plist */,
+				A746388C170EFE1A00F747DF /* Readme.markdown */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
 		A7E7383716FC44A1009097ED = {
 			isa = PBXGroup;
 			children = (
-				A7E738AB16FCBA30009097ED /* Demo */,
+				A7463885170EFB1500F747DF /* Documentation */,
 				A7E7386616FC44B9009097ED /* Core */,
+				A7E738AB16FCBA30009097ED /* Demo */,
 				A7E7384216FC44A1009097ED /* Frameworks */,
 				A7E7384116FC44A1009097ED /* Products */,
 			);
@@ -304,6 +331,7 @@
 			targets = (
 				A7E7383F16FC44A1009097ED /* Wordpress Demo */,
 				A7E738CA16FCBB81009097ED /* DTXMLRPC */,
+				A7463887170EFB4A00F747DF /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -318,10 +346,28 @@
 				A7E738BD16FCBA30009097ED /* Default.png in Resources */,
 				A7E738BE16FCBA30009097ED /* Default@2x.png in Resources */,
 				A7E738C016FCBA30009097ED /* ViewController.xib in Resources */,
+				A746388E170EFE7D00F747DF /* AppledocSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A746388B170EFB6000F747DF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc --print-settings --output \"${BUILD_DIR}/Documentation/\" \"${PROJECT_DIR}\"\necho \"Documentation Output directory: ${BUILD_DIR}/Documentation/\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A7E7383C16FC44A1009097ED /* Sources */ = {
@@ -369,6 +415,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A7463889170EFB4A00F747DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A746388A170EFB4A00F747DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A7E7386116FC44A1009097ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -497,6 +557,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A7463888170EFB4A00F747DF /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7463889170EFB4A00F747DF /* Debug */,
+				A746388A170EFB4A00F747DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A7E7383B16FC44A1009097ED /* Build configuration list for PBXProject "DTXMLRPC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

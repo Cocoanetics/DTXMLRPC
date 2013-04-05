@@ -6,11 +6,17 @@
 //  Copyright (c) 2013 Drobnik KG. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "DTXMLRPCMessage.h"
 
+/**
+ An XML-RPC request
+ */
+
 @interface DTXMLRPCRequest : DTXMLRPCMessage
+
+/**
+ @name Creating Requests
+ */
 
 /**
  Creates a new XML-RPC request with a function name.

@@ -3,6 +3,8 @@ DTXMLRPC
 
 This project provides some simple wrappers around XML-RPC requests and responses. Based on that an example implementation for the Wordpress XML-RPC API is provided.
 
+Contains DTBase64Coding from DTFoundation. If you plan to use both let me know so that we can make a static library that excludes this class.
+
 License
 -------
 

@@ -13,6 +13,9 @@
 
 typedef void (^DTXMLRPCRequestCompletionHandler)(DTXMLRPCResponse *response);
 
+/**
+ An XML-RPC service. The service is created with an end-point to which DTXMLRPCRequest objects are sent. 
+ */
 @interface DTXMLRPCService : NSObject
 
 /**

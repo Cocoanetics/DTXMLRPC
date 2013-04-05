@@ -6,11 +6,20 @@
 //  Copyright (c) 2013 Drobnik KG. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+/**
+ Category on `NSArray` used for naming it and setting a reference to its parent
+ */
 
 @interface NSArray (DTXMLRPC)
 
+/**
+ The XML-RPC sequence name of the receiver
+ */
 @property (nonatomic, strong) NSString *DTXMLRPCName;
+
+/**
+ The parent of the receiver
+ */
 @property (nonatomic, unsafe_unretained) NSArray *DTXMLRPCParent;
 
 @end
