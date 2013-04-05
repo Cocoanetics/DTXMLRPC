@@ -321,15 +321,68 @@ static NSDictionary *entityReverseLookup = nil;
 
 + (NSString *)_stringByEncodingValueOfObject:(id)object
 {
-    if ([object isKindOfClass:[NSString class]])
+    // data types from http://en.wikipedia.org/wiki/XML-RPC#Data_types)
+    
+    if ([object isKindOfClass:[NSArray class]])
+    {
+        NSMutableString *tmpString = [NSMutableString string];
+        
+        [tmpString appendString:@"<array><data>"];
+        
+        for (id oneValue in object)
+        {
+            [tmpString appendString:@"<value>"];
+            [tmpString appendString:[DTXMLRPCSerialization _stringByEncodingValueOfObject:oneValue]];
+            [tmpString appendString:@"</value>"];
+        }
+
+        [tmpString appendString:@"</data></array>"];
+
+        return [tmpString copy];
+    }
+    else if ([object isKindOfClass:[NSData class]])
+    {
+        NSString *base64String = [DTBase64Coding stringByEncodingData:object];
+        return [NSString stringWithFormat:@"<base64>%@</base64>", base64String];
+    }
+    else if ([object isKindOfClass:[NSNumber class]])
+    {
+        // type depends on original objCtype
+        NSString *typeName = nil;
+        
+        if (strcmp([object objCType], @encode(BOOL)) == 0)
+        {
+            typeName = @"boolean";
+        }
+        else if (strcmp([object objCType], @encode(int)) == 0)
+        {
+            typeName = @"int";
+        }
+        else if (strcmp([object objCType], @encode(double)) == 0)
+        {
+            typeName = @"double";
+        }
+        else
+        {
+            NSLog(@"Unknown number type");
+        }
+        
+        return [NSString stringWithFormat:@"<%@>%@</%@>", typeName, [object description], typeName];
+    }
+    else if ([object isKindOfClass:[NSDate class]])
+    {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm"];
+        
+        NSString *dateStr = [dateFormatter stringFromDate:object];
+        
+        return [NSString stringWithFormat:@"<dateTime.iso8601>%@</dateTime.iso8601>", dateStr];
+    }
+    else if ([object isKindOfClass:[NSString class]])
     {
         NSString *s = [self _stringByAddingHTMLEntitiesToString:object];
         
         return [NSString stringWithFormat:@"<string>%@</string>", s];
-    }
-    else if ([object isKindOfClass:[NSNumber class]])
-    {
-        return [NSString stringWithFormat:@"<int>%@</int>", [object description]];
     }
     else if ([object isKindOfClass:[NSDictionary class]])
     {
@@ -347,21 +400,19 @@ static NSDictionary *entityReverseLookup = nil;
             [tmpString appendString:[DTXMLRPCSerialization _stringByEncodingValueOfObject:value]];
             
             [tmpString appendString:@"</value></member>"];
-            
         }
         
         [tmpString appendString:@"</struct>"];
         
         return [tmpString copy];
     }
-    else if ([object isKindOfClass:[NSData class]])
+    else if (object == [NSNull null])
     {
-        NSString *base64String = [DTBase64Coding stringByEncodingData:object];
-        return [NSString stringWithFormat:@"<base64>%@</base64>", base64String];
+        return @"<nil/>";
     }
     else
     {
-        NSLog(@"Implement class %@", NSStringFromClass([object class]));
+        NSLog(@"Unable to serialize objects of class %@", NSStringFromClass([object class]));
     }
     
     return nil;
